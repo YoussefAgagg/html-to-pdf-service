@@ -8,7 +8,7 @@ RUN apt update && apt upgrade -y
 RUN apt install -y wget unzip curl gnupg
 
 # Download and install Google Chrome
-RUN wget hhttp://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_129.0.6668.89-1_amd64.deb
+RUN wget http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_129.0.6668.89-1_amd64.deb
 RUN apt install -y ./google-chrome-stable_129.0.6668.89-1_amd64.deb
 
 # Get the installed Chrome version and set it as an argument

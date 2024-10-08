@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  html-pdf-service:
+    image: "html-pdf-service:latest"
+    platform: linux/amd64
+    build:
+      context: .
+    container_name: "html-pdf-service"
+    ports:
+      - 8080:8080

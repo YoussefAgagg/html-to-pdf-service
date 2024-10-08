@@ -24,7 +24,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.seleniumhq.selenium:selenium-java:4.22.0'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.25.0'
     implementation 'org.apache.pdfbox:pdfbox:3.0.2'
     implementation 'org.apache.xmlgraphics:batik-transcoder:1.17'
     implementation 'org.apache.xmlgraphics:fop:2.9'
