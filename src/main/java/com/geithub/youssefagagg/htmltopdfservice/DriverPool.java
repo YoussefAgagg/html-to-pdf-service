@@ -14,13 +14,15 @@ import org.springframework.stereotype.Component;
 public class DriverPool {
   @Value("${chrome.driver.path}")
   private String chromeDriverPath;
+  @Value("${chrome.pool.size}")
+  private int poolSize = 6;
 
-  private final BlockingQueue<WebDriver> driverPool = new LinkedBlockingQueue<>(6);
+  private final BlockingQueue<WebDriver> driverPool = new LinkedBlockingQueue<>(poolSize);
 
   @PostConstruct
   private void init() {
     System.setProperty("webdriver.chrome.driver", chromeDriverPath);
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < poolSize; i++) {
       driverPool.add(createWebDriverInstance());
     }
   }

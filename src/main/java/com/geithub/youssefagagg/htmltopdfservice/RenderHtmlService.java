@@ -35,9 +35,10 @@ public class RenderHtmlService {
   @Async("taskExecutor")
   @SneakyThrows
   public CompletableFuture<GeneratedPdf> savePdfFromHtml(int order, String htmlContent) {
+    log.info("Saving PDF from HTML");
+    log.info("getting driver from pool");
     WebDriver driver = driverPool.borrowDriver();
-    String uniqueID = UUID.randomUUID().toString();
-    File tempHtmlFile = File.createTempFile("temp_" + uniqueID, ".html");
+    File tempHtmlFile = File.createTempFile("temp_" , ".html");
     try {
       log.info("Creating temporary file: {}", tempHtmlFile.getAbsolutePath());
 
@@ -55,13 +56,13 @@ public class RenderHtmlService {
           .ignoring(org.openqa.selenium.NoSuchElementException.class)
           .ignoring(org.openqa.selenium.TimeoutException.class);
 
-      wait.until(d -> !d.findElement(By.tagName("h3")).getText().isBlank());
+      wait.until(d -> d.findElement(By.tagName("body")));
       log.info("Page rendered successfully for file: {}", tempHtmlFile.getAbsolutePath());
 
       PrintsPage printsPage = (PrintsPage) driver;
       PrintOptions printOptions = new PrintOptions();
-      printOptions.setPageRanges("1");
-      printOptions.setPageSize(new PageSize(30, 22));
+//      printOptions.setPageRanges("1");
+      printOptions.setPageSize(new PageSize(25, 20));
       printOptions.setScale(1.0);
 
       String pdfBase64 = printsPage.print(printOptions).getContent();
@@ -70,6 +71,7 @@ public class RenderHtmlService {
       return CompletableFuture.completedFuture(new GeneratedPdf(order,byteArrayResource));
     } finally {
       driverPool.returnDriver(driver);
+      log.info("Driver returned to pool");
       tempHtmlFile.delete();
       log.info("Temporary file deleted: {}", tempHtmlFile.getAbsolutePath());
     }
