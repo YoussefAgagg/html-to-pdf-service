@@ -100,8 +100,9 @@ Alternatively, you can place the ChromeDriver executable in the `src/main/resour
 
 ## Built With
 
-- [Spring MVC](https://spring.io/guides/gs/serving-web-content/) - Web framework
+- [Spring](https://projects.spring.io/spring-boot/) - Web framework
 - [Docker](https://www.docker.com/) - Containerization platform
 - [Gradle](https://gradle.org/) - Build tool
 - [Lombok](https://projectlombok.org/) - Boilerplate code reduction
+- [selenuim](https://github.com/SeleniumHQ/selenium)
 
