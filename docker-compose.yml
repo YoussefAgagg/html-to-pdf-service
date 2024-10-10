@@ -8,6 +8,8 @@ services:
     container_name: "html-pdf-service"
     ports:
       - 8080:8080
+    networks:
+      - npm
 networks:
   npm:
     external: true
