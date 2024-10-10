@@ -45,8 +45,8 @@ public class RenderHtmlService {
       log.info("Waiting for page to render for file: {}", tempHtmlFile.getAbsolutePath());
 
       Wait<WebDriver> wait = new FluentWait<>(driver)
-          .withTimeout(Duration.ofSeconds(60))
-          .pollingEvery(Duration.ofSeconds(2))
+          .withTimeout(Duration.ofSeconds(10))
+          .pollingEvery(Duration.ofSeconds(1))
           .ignoring(org.openqa.selenium.NoSuchElementException.class)
           .ignoring(org.openqa.selenium.TimeoutException.class);
 
