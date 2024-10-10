@@ -1,4 +1,4 @@
-package com.geithub.youssefagagg.htmltopdfservice;
+package com.github.youssefagagg.htmltopdfservice;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package com.geithub.youssefagagg.htmltopdfservice;
+package com.github.youssefagagg.htmltopdfservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

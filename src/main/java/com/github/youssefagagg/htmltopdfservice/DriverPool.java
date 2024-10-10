@@ -1,4 +1,4 @@
-package com.geithub.youssefagagg.htmltopdfservice;
+package com.github.youssefagagg.htmltopdfservice;
 
 import jakarta.annotation.PostConstruct;
 import java.util.concurrent.BlockingQueue;
