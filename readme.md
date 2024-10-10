@@ -11,8 +11,6 @@ A service that converts HTML content to PDF using Spring MVC, Jakarta EE, and ot
 - [Configuration](#configuration)
 - [Chrome & ChromeDriver](#chrome--chromedriver)
 - [Built With](#built-with)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
@@ -103,7 +101,6 @@ Alternatively, you can place the ChromeDriver executable in the `src/main/resour
 ## Built With
 
 - [Spring MVC](https://spring.io/guides/gs/serving-web-content/) - Web framework
-- [Jakarta EE](https://jakarta.ee/) - Enterprise edition for Java
 - [Docker](https://www.docker.com/) - Containerization platform
 - [Gradle](https://gradle.org/) - Build tool
 - [Lombok](https://projectlombok.org/) - Boilerplate code reduction
