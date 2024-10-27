@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.PrintsPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.print.PageSize;
@@ -51,6 +52,11 @@ public class RenderHtmlService {
           .ignoring(org.openqa.selenium.TimeoutException.class);
 
       wait.until(d -> d.findElement(By.tagName("body")));
+      wait.until(d -> {
+        String script = "return document.fonts.status === 'loaded'";
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) d;
+        return jsExecutor.executeScript(script).equals(true);
+      });
       log.info("Page rendered successfully for file: {}", tempHtmlFile.getAbsolutePath());
 
       PrintsPage printsPage = (PrintsPage) driver;
