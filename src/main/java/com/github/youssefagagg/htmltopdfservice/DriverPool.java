@@ -1,6 +1,7 @@
 package com.github.youssefagagg.htmltopdfservice;
 
 import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import org.openqa.selenium.PageLoadStrategy;
@@ -26,6 +27,7 @@ public class DriverPool {
       driverPool.add(createWebDriverInstance());
     }
   }
+
   private static WebDriver createWebDriverInstance() {
     ChromeOptions chromeOptions = new ChromeOptions();
     chromeOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
@@ -37,11 +39,17 @@ public class DriverPool {
 
     return new ChromeDriver(chromeOptions);
   }
+
   public WebDriver borrowDriver() throws InterruptedException {
     return driverPool.take();
   }
 
   public void returnDriver(WebDriver driver) {
     driverPool.offer(driver);
+  }
+
+  @PreDestroy
+  private void destroy() {
+    driverPool.forEach(WebDriver::quit);
   }
 }
