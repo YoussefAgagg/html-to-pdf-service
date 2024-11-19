@@ -64,6 +64,7 @@ public class RenderHtmlService {
 //      printOptions.setPageRanges("1");
       printOptions.setPageSize(new PageSize(25, 20));
       printOptions.setScale(1.0);
+      printOptions.setBackground(true);
 
       String pdfBase64 = printsPage.print(printOptions).getContent();
       byte[] pdfData = Base64.getDecoder().decode(pdfBase64);
